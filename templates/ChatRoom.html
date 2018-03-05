@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Harp ChatRoom</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+<body ng-controller="MsgCtrl as ctrl">
+<div class="chat-area">
+    <div class="content-area">
+        <ul ng-repeat="log in ctrl.content" ng-cloak class="repeat-finish">
+            <li class="single-log">
+                {%raw%}
+                <img class="avatar" ng-src="{{ctrl.get_avatar(log.avatar_id)}}" ng-cloak/>
+                <div class="username" ng-cloak>{{log.username}}</div>
+                <div class="chat-time" ng-cloak>{{log.chat_time}}</div>
+                <div class="chat-content" ng-style="ctrl.chat_style(log.status)" ng-cloak>{{log.content}}</div>
+                {%endraw%}
+            </li>
+        </ul>
+    </div>
+    <div class="send-area">
+        <div class="tools">
+            {% raw %}
+            <img class="change-avatar" title="更换头像" ng-src="{{ctrl.get_avatar(ctrl.avatar_id)}}"
+                 ng-click="ctrl.change_avatar_selector_style()"/>
+            {% endraw %}
+            <input type="text" class="nickname" placeholder="Your Name" ng-model="ctrl.user"
+                   ng-style="ctrl.input_style(ctrl.user)">
+            <img class="face" title="表情" ng-click="ctrl.change_face_tip_style()"
+                 src="{{ url_for('static',filename='images/face.png') }}"/>
+            <div class="face_tip" ng-style="ctrl.show_element(ctrl.show_face_tip)">
+                <h5>还没有表情功能，别瞎点了</h5>
+            </div>
+        </div>
+        <textarea ng-model="ctrl.msg" ng-style="ctrl.input_style(ctrl.msg)"></textarea>
+        <div class="under-send-area">
+            <span ng-style="ctrl.constrict()">字数: {% raw %}{{ctrl.msg.length}}{% endraw %}/200</span>
+            <button ng-click="ctrl.click()" ng-disabled="ctrl.check()">发送</button>
+        </div>
+    </div>
+</div>
+
+<div class="avatar-selector" ng-style="ctrl.show_element(ctrl.show_avatar_selector)">
+    {% raw %}
+    <img id="avatar1" class="avatars_pools" src="/static/images/avatars/1.jpg" ng-click="ctrl.change_avatar(1)">
+    <img id="avatar2" class="avatars_pools" src="/static/images/avatars/2.jpg" ng-click="ctrl.change_avatar(2)">
+    <img id="avatar3" class="avatars_pools" src="/static/images/avatars/3.jpg" ng-click="ctrl.change_avatar(3)">
+    <img id="avatar4" class="avatars_pools" src="/static/images/avatars/4.jpg" ng-click="ctrl.change_avatar(4)">
+    <img id="avatar5" class="avatars_pools" src="/static/images/avatars/5.jpg" ng-click="ctrl.change_avatar(5)">
+    <img id="avatar6" class="avatars_pools" src="/static/images/avatars/6.jpg" ng-click="ctrl.change_avatar(6)">
+    <img id="avatar7" class="avatars_pools" src="/static/images/avatars/7.jpg" ng-click="ctrl.change_avatar(7)">
+    <img id="avatar8" class="avatars_pools" src="/static/images/avatars/8.jpg" ng-click="ctrl.change_avatar(8)">
+    <img id="avatar9" class="avatars_pools" src="/static/images/avatars/9.jpg" ng-click="ctrl.change_avatar(9)">
+    {% endraw %}
+</div>
+
+<script src="{{ url_for('static',filename='javascript/angular/angular.min.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/socket.io.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/msg.js') }}" charset="UTF-8"></script>
+</body>
+</html>
