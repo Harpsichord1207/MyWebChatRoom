@@ -2,7 +2,7 @@
 A simple web chatroom by python(Flask/Flask-SocketIO) and AngularJS
 
 ## URL
-Project url: 180.76.50.50
+Chatroom url: 180.76.50.50
 
 ## More info
-More info please visit:
+More info please visit:https://segmentfault.com/a/1190000013528348
