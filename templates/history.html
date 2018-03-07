@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table{
+        table-layout: fixed;
+        width: 800px;
+    }
+    table, tr, th, td{
+        border: 1px solid crimson;
+    }
+    table tr:nth-child(odd){
+        background: #e1e1e1;
+    }
+    th{
+        background: #1a64ff;
+        color: white;
+    }
+    td{
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+</style>
+<body>
+<table>
+    <tr>
+        <th>Address</th>
+        <th>User</th>
+        <th>Content</th>
+        <th>Time</th>
+    </tr>
+    {% for log in logs %}
+    <tr>
+        <td>{{log.address}}</td>
+        <td>{{log.username}}</td>
+        <td>{{log.content}}</td>
+        <td>{{log.chat_time}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

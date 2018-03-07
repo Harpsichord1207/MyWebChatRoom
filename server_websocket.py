@@ -16,10 +16,11 @@ import config
 from models import return_last_log, insert_log
 from utilis import json_orm
 from datetime import datetime
-
+from admin_views import admin
 
 app = Flask(__name__)
 app.config.from_object(config)
+app.register_blueprint(admin, url_prefix='/admin')
 socketio = SocketIO(app)
 
 

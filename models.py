@@ -24,3 +24,6 @@ def return_last_log():
 def insert_log(log):
     col.insert(log)
 
+
+def return_last_n_logs(n):
+    return col.find(sort=[('chat_time', DESCENDING)]).limit(n)
