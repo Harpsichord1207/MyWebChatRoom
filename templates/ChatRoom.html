@@ -33,7 +33,7 @@
                 <h5>还没有表情功能，别瞎点了</h5>
             </div>
         </div>
-        <textarea ng-model="ctrl.msg" ng-style="ctrl.input_style(ctrl.msg)"></textarea>
+        <textarea ng-model="ctrl.msg" ng-style="ctrl.input_style(ctrl.msg)" ng-keyup="ctrl.enter_keypress($event)"></textarea>
         <div class="under-send-area">
             <span ng-style="ctrl.constrict()">字数: {% raw %}{{ctrl.msg.length}}{% endraw %}/200</span>
             <button ng-click="ctrl.click()" ng-disabled="ctrl.check()">发送</button>
@@ -57,6 +57,6 @@
 
 <script src="{{ url_for('static',filename='javascript/angular/angular.min.js') }}"></script>
 <script src="{{ url_for('static',filename='javascript/socket.io.js') }}"></script>
-<script src="{{ url_for('static',filename='javascript/msg.js') }}" charset="UTF-8"></script>
+<script src="{{ url_for('static',filename='javascript/msg.min.js') }}" charset="UTF-8"></script>
 </body>
 </html>
