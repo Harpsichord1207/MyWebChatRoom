@@ -2,7 +2,7 @@
 A simple web chatroom by python(Flask/Flask-SocketIO) and AngularJS
 
 ## URL
-Chatroom url: http://180.76.50.50
+~~Chatroom url: http://180.76.50.50~~
 
 ## More info
 More info please visit:
